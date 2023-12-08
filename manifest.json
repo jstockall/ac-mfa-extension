@@ -1,0 +1,32 @@
+{
+  "name": "AC-MFA-Gmail",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "Injects the MFA code for Air Canada Login",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.aircanada.com/clogin/pages/login"],
+      "js": ["file.js"]
+    }
+  ],
+
+  "oauth2": {
+    "client_id": "310982272671-7ch538ggskqs21gq3rl7bfnmjjlhk6bu.apps.googleusercontent.com",
+    "scopes": [
+      "profile email",
+      "https://www.googleapis.com/auth/gmail.readonly"
+    ]
+  },
+  "content_security_policy": {
+      "extention_pages": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+  },
+  "permissions": [
+      "identity",
+      "identity.email"
+    ]
+
+}
+
